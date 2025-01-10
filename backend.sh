@@ -55,10 +55,10 @@ else
 fi
 
 
-mkdir -p app &>>$LOG_FILE_NAME
+mkdir -p /app &>>$LOG_FILE_NAME
 VALIDATE $? "app dir created"
 
-curl -o /tmp/backend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip
+curl -o /tmp/backend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip  &>>$LOG_FILE_NAME
 VALIDATE $? "Downloading backend"
 
 cd /app
@@ -70,7 +70,7 @@ VALIDATE $? "unzip backend contents"
 npm install &>>$LOG_FILE_NAME
 VALIDATE $? "Installing dependencies"
 
-cp /home/ec2-user/linux-practice/shell-expense-project/backend.service /etc/systemd/system/backend.service
+cp /home/ec2-user/shell-expense-project/backend.service /etc/systemd/system/backend.service
 
 dnf install mysql -y &>>$LOG_FILE_NAME
 VALIDATE $? "insatlling mysql"
