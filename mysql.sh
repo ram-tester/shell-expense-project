@@ -32,7 +32,7 @@ VALIDATE(){
 }
 
 echo "script execution started at :$TIMESTAMP"  &>>$LOG_FILE_NAME
-
+mkdir -p $LOGS_FOLDER
 CHECK_ROOT
 
 dnf install mysql-server -y &>>$LOG_FILE_NAME
